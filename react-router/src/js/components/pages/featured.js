@@ -7,6 +7,7 @@ export default class Featured extends React.Component{
         <h1>Featured</h1>
         <h3>Hello</h3>
         <h4>hi</h4>
+        <h6>nannu</h6>
       </div>
     );
   }
