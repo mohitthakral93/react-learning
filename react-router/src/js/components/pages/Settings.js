@@ -2,7 +2,6 @@ import React from "react";
 
 export default class Settings extends React.Component{
   render(){
-    console.log(this.props);
     const {history,params,location} = this.props;
     const{query} = location;
       return(
