@@ -9,7 +9,7 @@ export default class Layout extends React.Component {
     this.props.history.replaceState(null,"/");
       }
   render() {
-      const {loaction} = this.props;
+      const {location} = this.props;    
       const containerStyle = {
         marginTop : "60px"
       };

@@ -3,6 +3,8 @@ import {IndexLink,Link} from "react-router";
 
 export default class Nav extends React.Component{
 
+  constructor(){
+    super();
   render(){
     const {location} = this.props;
     const featuredClass =  location.pathname === "/" ? "active":"";
