@@ -48,6 +48,7 @@ export default class Todos extends React.Component{
         <h1>Todos</h1>
         <input type = "text"  value = {this.state.value1} onChange = {this.handleChange.bind(this)}/>
         <button class="btn" onClick={this.createTodo.bind(this,this.state.value1)}>Create</button>
+        <br/>
         <button class="btn" onClick={this.reloadTodos.bind(this)}>Reload!</button>
         <ul>{toDosComps}</ul>
       </div>
