@@ -1,4 +1,5 @@
 import {EventEmitter} from 'events';
+import dispatcher from "../dispatchers/dispatcher";
 
 
 class TodosStore extends EventEmitter{
@@ -22,7 +23,7 @@ class TodosStore extends EventEmitter{
     this.todos.push({
       id,
       text,
-      complete 
+      complete
     });
     this.emit("change");
   }
@@ -30,9 +31,21 @@ class TodosStore extends EventEmitter{
   getAll(){
     return this.todos;
   }
+
+  handleActions(action){
+    switch (action.type) {
+      case "CREATE_TODO":
+          this.createTodo(action.text,action.complete);
+        break;
+      }
+  }
 }
 
 const todoStore = new TodosStore;
+
+dispatcher.register(todoStore.handleActions.bind(todoStore));
+
+window.dispatcher = dispatcher;
 
 window.todoStore = todoStore;
 
