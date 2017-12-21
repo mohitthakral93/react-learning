@@ -6,21 +6,28 @@ import * as TodoActions from "../../actions/TodoActions"
 export default class Todos extends React.Component{
   constructor(){
     super();
-
+    this.getTodos = this.getTodos.bind(this);
     this.state = {
       todos :TodoStore.getAll(),
       value1 : '',
-    };
+    }
+  }
 
+  getTodos(){
+    this.setState({
+      todos : TodoStore.getAll(),
+    });
   }
 
   componentWillMount(){
-    TodoStore.on("change",() => {
-      this.setState({
-        todos : TodoStore.getAll(),
+    TodoStore.on("change",this.getTodos);
+    console.log("Mounting");
+    console.log("Count",TodoStore.listenerCount("change"));
+  }
 
-      });
-    });
+  componentWillUnmount(){
+    console.log("Unmounting");
+    TodoStore.removeListener("change",this.getTodos);
   }
 
    createTodo(text){
